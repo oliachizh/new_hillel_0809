@@ -97,3 +97,45 @@ scores = [85, 92, 78]
 
 zipped = zip(names, scores)
 print(dict(zipped))
+
+""" sets """
+
+# An unordered collection of unique elements.
+# Defined with curly braces {} or with set().
+# no duplicates, order doesn’t matter(cant be accesed by index))
+
+set_comp = {k**2 for k in range(10)}
+print(set_comp)
+
+""" update"""
+set_comp.update([1,2])
+print(set_comp)
+
+set_comp.add(3) # adding one el
+print(set_comp)
+# remove
+
+set_comp.pop() # remove random element
+print(set_comp)
+
+set_comp.remove(81) # remove specified val
+print(set_comp)
+
+# logic operation
+print(81 in set_comp)
+
+# operations
+
+registered_users = {'Den', 'Max'}
+invited_users = {'Alice', 'Bob', 'Charlie', 'Den'}
+print(registered_users & invited_users)
+all_users = registered_users.union(invited_users)
+print(all_users)
+intersection_users = registered_users.intersection(invited_users)
+print(intersection_users)
+
+difference_users = registered_users.difference(invited_users)
+print(difference_users)
+
+diff_between_2_sets = registered_users.symmetric_difference(invited_users)
+print(diff_between_2_sets)
