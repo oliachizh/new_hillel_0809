@@ -394,14 +394,17 @@ result_1 = filter_dict(data, 5)
 # print(result_1)
 
 def analyze_scores(students, pass_mark=60):
+    if not isinstance(pass_mark, int):
+        raise TypeError("Pass mark must be an integer.")
     filtered_scores = dict(map(lambda i: (i[0].upper(), i[1] * 10),
-                               filter(lambda i: i[1] >= pass_mark, students.items())))
+                                   filter(lambda i: i[1] >= pass_mark, students.items())))
 
     return filtered_scores
 
-students = {"Alice": 85, "Bob": 42, "Charlie": 70, "Diana": 95}
-result = analyze_scores(students, pass_mark=60)
-# print(result)
+students = {"Alice": 0, "Bob": 42, "Charlie": 70, "Diana": 95}
+result = analyze_scores(students, pass_mark=10)
+print(result)
+
 
 def apply_tax(products, tax_rate):
     """
@@ -414,4 +417,4 @@ def apply_tax(products, tax_rate):
 
 products = {"apple": 1.5, "banana": 1.0, "mango": 2.5}
 result = apply_tax(products, 1.2)
-print(result)
+# print(result)
