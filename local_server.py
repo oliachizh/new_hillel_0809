@@ -22,6 +22,11 @@ def create_content():
     content.append(data)
     return jsonify({'message': 'Content created successfully!'}), 201
 
+
+@app.route('/content/<int:id>', methods=['GET'])
+def get_content_by_id(id):
+    return jsonify(content[id])
+
 # Маршрут для оновлення існуючого контенту
 @app.route('/content/<int:id>', methods=['PUT'])
 def update_content(id):
