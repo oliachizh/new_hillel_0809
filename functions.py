@@ -1,8 +1,21 @@
+# from loggers import sample_logger
+# from loggers import logger_from_file
+# import logging
+# logger = logging.getLogger(__name__)
+
+
 def factorial(n):
+    # sample_logger.info(f"Starting factorial calculation for {n}")
     if not isinstance(n, int):
-        raise TypeError("n must be an integer")
+        error_text = f"Argument must be an integer."
+        # sample_logger.error(f"Starting factorial calculation for {n}")
+        # sample_logger.error(error_text)
+        raise TypeError(error_text)
     if n < 0:
-        raise ValueError("n must be non-negative")
+        error_text = (f"Argument must be >= 0.")
+        # sample_logger.error(f"Starting factorial calculation for {n}")
+        # sample_logger.error(error_text)
+        raise ValueError(error_text)
     if n in (0, 1):
         return 1
     return n * factorial(n - 1)
@@ -12,7 +25,14 @@ def factorial(n):
 
 
 def analyze_scores(students, pass_mark=60):
+    # logger_from_file.info(f"Start Analyzing scores for {__name__}")
+    logger.info(f"Start Analyzing scores for {__name__}")
+    # logger_from_file.debug(f"Input for Analyzing scores: {students}")
+    logger.info(f"Input for Analyzing scores: {students}")
     if not isinstance(pass_mark, int):
+        error_text = f"Argument {pass_mark} must be an integer."
+        # logger_from_file.error(error_text)
+        logger.info(error_text)
         raise TypeError("Pass mark must be an integer.")
     if len(students) == 0:
         raise ValueError("Students list must not be empty.")
@@ -60,12 +80,12 @@ def process_employees(employees, *, min_salary=3000, bonus_rate=0.1, uppercase_n
 
     return updated
 
-employees = {"Alice": 2500, "Bob": 4000, "Charlie": 6000}
+# employees = {"Alice": 2500, "Bob": 4000, "Charlie": 6000}
 
-print(process_employees(employees, min_salary=3000, bonus_rate=0.2))
+# print(process_employees(employees, min_salary=3000, bonus_rate=0.2)
 # → {'Bob': 4800.0, 'Charlie': 7200.0}
 
-process_employees(employees, bonus_rate=0.1, uppercase_names=True, include_summary=True)
+# process_employees(employees, bonus_rate=0.1, uppercase_names=True, include_summary=True)
 # → {
 #     'employees': {'BOB': 4400.0, 'CHARLIE': 6600.0},
 #     'summary': {'count': 2, 'average_salary': 5500.0}
